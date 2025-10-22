@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+    background: #D1AB74;
+    color: #111;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.templeimg {
+    position: absolute;
+    top: 229px;
+    width: 154px;
+    height: 154px;
+    left: 50%;
+    transform: translateX(-50%);
+    aspect-ratio: 1/1;
+}
+
+.mainText {
+    position: absolute;
+    top: 401px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    font-family: "Hiragino Kaku Gothic ProN",
+        "ヒラギノ角ゴ ProN",
+        "Hiragino Kaku Gothic Pro",
+        "Hiragino Sans",
+        "Noto Sans JP",
+        sans-serif;
+    font-weight: 600;
+
+    color: #593618;
+    margin: 0;
+
+}
+
+.subText {
+    position: absolute;
+    top: 466px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 318px;
+    text-align: center;
+    color: #000;
+    text-align: center;
+
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+
+}
+
+
+.carousel {
+    position: absolute;
+    top: 639px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 12px;
+}
+
+
+.btns {
+    position: absolute;
+    top: 732px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 36px;
+    width: min(90vw, 316px);
+}
+
+
+
+.btnY,
+.btnN {
+    flex: 1 1 0;
+    height: 56px;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    opacity: .75;
+
+    font: 500 16px/1.2 Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+    letter-spacing: .02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    /* flex-direction: row-reverse; */
+    /* transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease; */
+}
+
+
+.btnY {
+    background: #fff;
+}
+
+.btnN {
+    background: transparent;
+}
+
+
+
+.btnY:active,
+.btnN:active {
+    transform: scale(.98);
+}
+
+/* 狭い画面は縦並び */
+@media (max-width:360px) {
+    .btns {
+        width: min(92vw, 320px);
+        flex-direction: column;
+    }
+
+    .btnY,
+    .btnN {
+        height: 48px;
+        font-size: 15px;
+    }
+}
+
+@keyframes pageLeave {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.pageLeave {
+    animation: pageLeave 300ms ease forwards;
+    pointer-events: none;
+    /* ダブルタップ防止 */
+}
