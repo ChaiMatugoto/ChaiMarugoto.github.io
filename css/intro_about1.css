@@ -16,6 +16,30 @@ body {
     position: relative;
 }
 
+:root {
+    --ff-main: "Noto Sans JP", "Hiragino Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 1) body を共通フォントに（既存の body の font-family を置き換え） */
+body {
+    font-family: var(--ff-main);
+}
+
+/* 2) “ボタンと同じ書体”にそろえたい要素を全部 inherit 化 */
+.enb__ttl,
+.enb__lead,
+.enb__panelTxt,
+.card__ttl,
+.card__lead,
+.card__btnTxt,
+.qcard__title,
+.qcard__no,
+.choice__pill,
+.tabbar__label {
+    font-family: inherit;
+    /* ← これで body と同じ書体になる */
+}
+
 .bookimg {
     position: absolute;
     top: 173px;
