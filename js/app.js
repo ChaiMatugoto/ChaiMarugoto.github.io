@@ -15,4 +15,16 @@
 
     // iOSタップ反応の安定化
     document.addEventListener('touchstart', () => { }, { passive: true });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.allergy__note').forEach(p => {
+            const t = (p.textContent || "").trim();
+            const m = t.match(/^(.*?)\s*(：|:)\s*(.*)$/); // 全角/半角コロン対応
+            if (!m) return;
+            p.innerHTML = `<strong>${m[1]}</strong>${m[2]}${m[3]}`;
+        });
+    });
+
 })();
+
