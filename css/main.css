@@ -18,7 +18,7 @@ body {
 
 .hdr {
     position: relative;
-    margin-top: 68px;
+    margin-top: 15px;
     height: 36px;
     display: grid;
     justify-items: center;
@@ -481,4 +481,16 @@ main,
         padding: 6px 10px;
         font-size: 12px;
     }
+}
+
+
+main,
+.page,
+.content {
+    padding-bottom: calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 24px) !important;
+}
+
+/* 注意書き自体も、フッター分だけ離しておく */
+.notice--diag {
+    margin: 10px auto calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 16px) !important;
 }

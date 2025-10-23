@@ -18,7 +18,7 @@ body {
 
 .templeimg {
     position: absolute;
-    top: 229px;
+    top: 140px;
     width: 154px;
     height: 154px;
     left: 50%;
@@ -28,7 +28,7 @@ body {
 
 .mainText {
     position: absolute;
-    top: 401px;
+    top: 312px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 40px;
@@ -50,7 +50,7 @@ body {
 
 .subText {
     position: absolute;
-    top: 466px;
+    top: 367px;
     left: 50%;
     transform: translateX(-50%);
     width: 318px;
@@ -70,7 +70,7 @@ body {
 
 .carousel {
     position: absolute;
-    top: 639px;
+    top: 500px;
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
@@ -80,7 +80,7 @@ body {
 
 .btns {
     position: absolute;
-    top: 732px;
+    top: 550px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
