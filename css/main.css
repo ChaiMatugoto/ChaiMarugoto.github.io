@@ -160,7 +160,7 @@ body {
 }
 
 .cards {
-    margin: 35px auto 0;
+    margin: 10px auto 6px;
     display: grid;
     grid-template-columns: repeat(2, 183px);
     gap: 7px;
@@ -363,7 +363,7 @@ main,
 
 /* ===== 診断ダイジェスト（灰色帯） ===== */
 .digest {
-    margin: 16px 14px;
+    margin: 10px 14px;
     background: #8f8e90;
     /* モックのグレーに近い色 */
     color: #fff;
@@ -371,8 +371,8 @@ main,
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
+    gap: 6px;
+    padding: 10px 10px;
 }
 
 /* 左の白い丸チップ */
@@ -397,7 +397,7 @@ main,
 .digest__row {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
     align-items: baseline;
     line-height: 1.3;
 }
