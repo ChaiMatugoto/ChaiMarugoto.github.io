@@ -1,3 +1,5 @@
+/* ============ 神様診断 結果ページ ============ */
+/* 画像に文字が重なる旧指定を完全に無効化し、名前・本文の順序を固定 */
 * {
     box-sizing: border-box;
 }
@@ -16,7 +18,7 @@ body {
     position: relative;
 }
 
-
+/* ヘッダー */
 .hdr {
     position: relative;
     margin-top: 68px;
@@ -27,7 +29,6 @@ body {
     --hdr-gap: 6px;
     /* ← ここだけ変えればOK */
     height: calc(36px + var(--hdr-gap));
-    /* 元の36pxに“足す”だけ */
 }
 
 .hdr .hdr-text {
@@ -41,7 +42,6 @@ body {
     font-weight: 700;
 }
 
-
 .hdr .hdr-line {
     position: absolute;
     bottom: 0;
@@ -53,24 +53,17 @@ body {
     margin: 0;
 }
 
-
 .hdr__back {
     position: absolute;
     left: 12px;
-    /* 画面左からの余白 */
     top: 50%;
     transform: translateY(calc(-50% - var(--hdr-gap) / 2));
-    /* 上の --hdr-gap を考慮して垂直中央に見えるように */
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     width: 36px;
-    /* タップ領域 */
     height: 36px;
     border-radius: 50%;
-
     color: #000;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
@@ -91,66 +84,94 @@ body {
     stroke-width: 3;
 }
 
+
+/* ページ余白（既存のヘッダー/タブバー前提） */
 .result {
-    width: min(92vw, 480px);
-    margin: 32px auto 64px;
+    padding: 16px 16px calc(48px + env(safe-area-inset-bottom) + 10px);
+    color: var(--ink);
 }
 
+/* ===== ヒーロー（丸い画像＋名前は外） ===== */
 .resultHero {
-    position: relative;
     display: grid;
-    place-items: center;
+    justify-items: center;
+    gap: 12px;
+    margin: 20px 0 12px;
 }
 
-.resultHero__circle {
-    width: clamp(240px, 70vw, 420px);
-    aspect-ratio: 1 / 1;
+.resultHero__avatar {
+    /* 画面幅の約80%まで拡大。上限は好みで調整 */
+    width: clamp(180px, 80vw, 520px);
+    height: clamp(180px, 80vw, 520px);
     border-radius: 50%;
-    background: #E1E1E1;
-    /* モックの薄いグレー */
-    /* 影が欲しければ↓を有効化
-  box-shadow: 0 10px 18px rgba(0,0,0,.12);
-  */
+    overflow: hidden;
+    background: var(--chip);
+    border: 1px solid var(--border);
+    position: relative;
 }
 
+/* 画像が円にフィット */
+.resultHero__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 古い「円テキスト重ね」を完全OFF */
+.resultHero__avatar::before,
+.resultHero__avatar::after,
+.resultHero::before,
+.resultHero::after {
+    content: none !important;
+}
+
+/* 旧円要素が残っている場合に備えて殺す */
+.resultHero__circle {
+    display: none !important;
+}
+
+/* 神様名：大きく＆画像の外側に配置 */
 .resultHero__name {
-    position: absolute;
-    margin: 0;
-    font-weight: 800;
-    font-size: clamp(40px, 10vw, 72px);
-    line-height: 1;
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    margin: 10px 0 0;
+    text-align: center;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 40px);
     letter-spacing: .02em;
-    color: #000;
-    text-align: center;
-}
-
-/* タイトル＆本文 */
-.resultBody {
-    text-align: center;
-    margin-top: clamp(28px, 6vh, 56px);
-}
-
-.resultBody__title {
-    margin: 0 0 20px;
-    font-weight: 800;
-    font-size: clamp(28px, 6.5vw, 40px);
     line-height: 1.2;
-    color: #000;
+}
+
+/* ===== 本文（②どんな人か → ③説明） ===== */
+.resultBody {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 4px;
+}
+
+.resultBody__subtitle {
+    margin: 4px 0 10px;
+    font-size: clamp(18px, 3.8vw, 22px);
+    font-weight: 800;
+    letter-spacing: .01em;
+    line-height: 1.5;
 }
 
 .resultBody__desc {
-    display: grid;
-    gap: 14px;
-    /* 段落間 */
+    font-size: clamp(15px, 3.6vw, 18px);
+    line-height: 1.9;
+    letter-spacing: -0.005em;
+    font-feature-settings: "palt" 1;
 }
 
 .resultBody__desc p {
-    margin: 0;
-    font-weight: 700;
-    font-size: clamp(16px, 4.5vw, 22px);
-    line-height: 1.9;
-    /* 画像に近いゆったり感 */
-    color: #000;
+    margin: 0 0 .7em;
+}
+
+.resultBody__desc p:last-child {
+    margin-bottom: 0;
 }
 
 .resultActions {
@@ -186,6 +207,15 @@ body {
     transform: scale(.985);
     filter: brightness(.98);
 }
+
+/* 横向き時の過拡大を抑制 */
+@media (orientation: landscape) {
+    .resultHero__avatar {
+        width: min(60vmin, 520px);
+        height: min(60vmin, 520px);
+    }
+}
+
 
 
 :root {
@@ -239,9 +269,8 @@ body {
 .tabbar__label {
     font: 700 13px/1.1 "Noto Sans JP", "Hiragino Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     text-align: center;
-    white-space: nowrap;
     letter-spacing: 0.03em;
-
+    white-space: nowrap;
 }
 
 @media (max-width: 380px) {
@@ -257,29 +286,63 @@ body {
     }
 }
 
-main,
-.page,
-.content {
-    padding-bottom: calc(var(--tabbar-height) + 8px + env(safe-area-inset-bottom));
+
+/* 神様の名前をさらに大きく */
+.resultHero__name {
+    font-size: clamp(32px, 7vw, 48px);
+    /* 旧: clamp(28px, 6vw, 40px) */
+    font-weight: 900;
+    letter-spacing: .02em;
+    line-height: 1.15;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.resultBody__subtitle {
+    text-align: center;
+    /* 追加：中央寄せ */
+    font-size: clamp(20px, 4.5vw, 26px);
+    /* 旧: clamp(18px, 3.8vw, 22px) */
+    font-weight: 800;
+    letter-spacing: .01em;
+    line-height: 1.5;
+    margin: 8px 0 12px;
 }
 
 
-/* 小さめ端末での微調整 */
-@media (max-width: 360px) {
-    .backBtn {
-        min-width: 200px;
-        height: 44px;
-        font-size: 18px;
-    }
+/* コンテンツ全体の下余白を少し増やす（タブバーとの間に余裕） */
+.result {
+    padding-bottom: calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 24px) !important;
 }
 
-/* ちょい縮める（小さめ端末） */
-@media (max-width: 360px) {
-    .result {
-        margin-top: 24px;
-    }
+/* ボタンブロックの下マージンを拡大（= さらに下に配置される） */
+.resultActions {
+    margin: 28px auto 96px !important;
+    /* 旧: 28px auto 56px */
+}
 
-    .resultBody__title {
-        margin-bottom: 16px;
-    }
+
+
+/* トーンを下げたゴースト風ボタンに */
+.backBtn {
+    background: #ebebeb !important;
+    /* ほんのり生成り（目立たない） */
+    color: #3D2E1F !important;
+    /* 濃茶インク */
+    border: 1px solid #C8B8A6 !important;
+    /* 薄い枠線 */
+    box-shadow: none !important;
+    /* 影を消して主張を抑える */
+    transition: border-color .12s ease, filter .12s ease, transform .12s ease;
+}
+
+/* 触感は少し残す（主張しすぎないフィードバック） */
+.backBtn:hover {
+    border-color: #B8A48E;
+}
+
+.backBtn:active {
+    transform: translateY(1px);
+    /* ほんの少しだけ沈む */
+    filter: brightness(.99);
 }

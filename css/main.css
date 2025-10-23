@@ -342,7 +342,7 @@ main,
     padding-bottom: calc(var(--tabbar-height) + 8px + env(safe-area-inset-bottom));
 }
 
-@media (max-width: 520px) {
+@media (max-width: 390px) {
     .cards {
         grid-template-columns: 1fr;
         /* 1列に */
@@ -358,4 +358,103 @@ main,
         width: 183px;
         height: 224px;
     }
+}
+
+
+/* ===== 診断ダイジェスト（灰色帯） ===== */
+.digest {
+    margin: 16px 14px;
+    background: #8f8e90;
+    /* モックのグレーに近い色 */
+    color: #fff;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+}
+
+/* 左の白い丸チップ */
+.digest__chip {
+    flex: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    color: #333;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* 右側のテキストエリア */
+.digest__content {
+    min-width: 0;
+}
+
+.digest__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: baseline;
+    line-height: 1.3;
+}
+
+.digest__deity {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.digest__topping {
+    font-size: 18px;
+    font-weight: 700;
+    opacity: .95;
+}
+
+/* サブ説明 */
+.digest__desc {
+    margin: 4px 0 0;
+    font-size: 13px;
+    opacity: .9;
+}
+
+/* 小さめ端末の微調整 */
+@media (max-width: 360px) {
+    .digest {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .digest__chip {
+        width: 48px;
+        height: 48px;
+        font-size: 12px;
+    }
+
+    .digest__deity {
+        font-size: 20px;
+    }
+
+    .digest__topping {
+        font-size: 16px;
+    }
+}
+
+
+.digest__chip {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #eee;
+    flex: 0 0 auto;
+}
+
+.digest__chip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }

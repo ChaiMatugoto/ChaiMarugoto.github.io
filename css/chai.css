@@ -322,7 +322,7 @@ main.chai {
 /* 段落だけを明示的に上げたい場合はこちらでもOK */
 .panel--about .panel__body p,
 .panel--allergy .panel__body p {
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.5;
 }
 

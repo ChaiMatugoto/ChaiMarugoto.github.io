@@ -1,6 +1,7 @@
 /* ========================================
-   chai.css — チャイ紹介ページ（フル版）
-   * 既存のヘッダー/タブバーCSS＋カード/メニュー画像対応
+   kamisama.css — 神様についてページ
+   * 既存のヘッダー/タブバーCSS＋カード
+   * ＋「神様の種類」リスト（画像＋名前＋タグ）
 ======================================== */
 
 /* リセット・基本 */
@@ -31,7 +32,6 @@ body {
     justify-items: center;
     align-items: center;
     --hdr-gap: 6px;
-    /* ← ここだけ変えればOK */
     height: calc(36px + var(--hdr-gap));
 }
 
@@ -98,11 +98,9 @@ body {
 
     /* パネル色・角丸 */
     --panel-aqua: #cfeff0;
-    /* 「チャイとは？」 */
-    --panel-pink: #f2c2c8;
-    /* 「メニュー」 */
+    /* 1枚目：水色 */
     --panel-lav: #cfc9ff;
-    /* 「アレルギー」 */
+    /* 2枚目：薄紫 */
     --round: 18px;
 }
 
@@ -189,14 +187,6 @@ main,
     }
 }
 
-:root {
-    --panel-aqua: #cfeff0;
-    /* 1枚目：水色 */
-    --panel-lav: #cfc9ff;
-    /* 2枚目：薄紫 */
-    --round: 18px;
-}
-
 /* ===== 本文レイアウト ===== */
 main.kamisama {
     padding: 16px 14px 96px;
@@ -219,7 +209,6 @@ main.kamisama {
     /* 影なし */
 }
 
-/* カード色 */
 .panel--about {
     background: var(--panel-aqua);
 }
@@ -244,15 +233,85 @@ main.kamisama {
 
 .panel__body p {
     margin: 0 0 .7em;
-    font-size: 20px;
-    /* 指定どおり24px */
+    font-size: 17px;
 }
 
 .panel__body p:last-child {
     margin-bottom: 0;
 }
 
-/* ===== ちょいレスポンシブ（任意） ===== */
+/* ===== 「神様の種類」リスト =====
+   左に丸付き画像（画像自体に丸が含まれる前提）
+   右に 名前（大）＋サブコピー（中）
+*/
+.deityList {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0 0;
+    /* 見出しとの間隔を少し確保 */
+    display: grid;
+    gap: 28px;
+    /* 各行の縦間隔 */
+}
+
+.deity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* 画像とテキストの間 */
+    padding: 4px 2px;
+    min-width: 0;
+    /* テキストの折返し安定 */
+}
+
+.deity__img {
+    width: 96px;
+    height: 96px;
+    display: block;
+    object-fit: cover;
+    /* 念のため */
+    flex: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.deity__body {
+    min-width: 0;
+}
+
+.deity__name {
+    margin: 0;
+    font-weight: 800;
+    font-size: 32px;
+    /* モック寄せ：大きめ */
+    letter-spacing: .04em;
+    line-height: 1.2;
+}
+
+.deity__tag {
+    margin: 6px 0 0;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: .95;
+}
+
+/* 小さめ端末で少し詰める */
+@media (max-width: 360px) {
+    .deity__img {
+        width: 84px;
+        height: 84px;
+    }
+
+    .deity__name {
+        font-size: 28px;
+    }
+
+    .deity__tag {
+        font-size: 16px;
+    }
+}
+
+/* タブレット以上でゆったり */
 @media (min-width: 768px) {
     main.kamisama {
         padding: 20px 24px 110px;
@@ -262,5 +321,46 @@ main.kamisama {
         gap: 22px;
         max-width: 720px;
         margin: 0 auto;
+    }
+
+    .deityList {
+        gap: 32px;
+    }
+
+    .deity__img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .deity__name {
+        font-size: 36px;
+    }
+
+    .deity__tag {
+        font-size: 20px;
+    }
+}
+
+
+.deity__name {
+    font-size: 28px;
+    /* 32px → 28px に縮小 */
+    line-height: 1.25;
+    /* 読みやすく少し広め */
+}
+
+/* タブレット以上も少しだけ小さく */
+@media (min-width: 768px) {
+    .deity__name {
+        font-size: 32px;
+    }
+
+    /* 36px → 32px */
+}
+
+/* かなり小さい端末向けの保険（任意） */
+@media (max-width: 360px) {
+    .deity__name {
+        font-size: 26px;
     }
 }

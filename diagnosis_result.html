@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>チャチャイのチャイ</title>
+    <title>チャチャイのチャイ - 神様診断</title>
     <link rel="stylesheet" href="css/diagnosis_result.css" />
 </head>
 
 <body>
+    <!-- 既存ヘッダーの設計に合わせた最小構成（重複IDなし） -->
     <header class="hdr" aria-label="ページ見出し">
         <a class="hdr__back" href="javascript:void(0)" aria-label="前のページに戻る" onclick="history.back();">
             <svg class="hdr__backIcon" viewBox="0 0 24 24" aria-hidden="true">
@@ -20,52 +21,52 @@
         <hr class="hdr-line">
     </header>
 
+
     <main class="result" role="main" aria-label="診断結果">
-        <!-- 大きな円（中に神様名） -->
+        <!-- ヒーロー：丸=画像／名前は“外”に表示（重なり防止） -->
         <section class="resultHero" aria-labelledby="result-name">
-            <div class="resultHero__circle" aria-hidden="true"></div>
-            <h2 id="result-name" class="resultHero__name">神様</h2>
+            <div class="resultHero__avatar" aria-hidden="true">
+                <img id="result-portrait" src="img/deities/placeholder.png" alt="">
+            </div>
+            <h2 id="result-name" class="resultHero__name">未診断</h2>
         </section>
 
-        <!-- タイトル/リード -->
+        <!-- 本文：②どんな人か → ③説明文 -->
         <section class="resultBody">
-            <h3 class="resultBody__title">ああああ</h3>
-
-            <div class="resultBody__desc">
-                <p>ああああああああああああああああ</p>
-                <p>ああああああああああああああああ</p>
+            <p class="resultBody__subtitle" id="result-subtitle">トッピング</p>
+            <div class="resultBody__desc" id="result-desc">
+                <p>診断結果の説明が入ります。</p>
             </div>
         </section>
 
         <div class="resultActions">
             <a href="main.html" class="backBtn" role="button" aria-label="Homeへ戻る">Homeへ戻る ＞</a>
         </div>
-
-        <nav class="tabbar" aria-label="フッターナビ">
-            <div class="tabbar__inner">
-                <a class="tabbar__item" href="chai.html">
-                    <img class="tabbar__ico" src="img/ico_chai_white.png" alt="" aria-hidden="true">
-                    <span class="tabbar__label">チャイ</span>
-                </a>
-
-                <a class="tabbar__item is-active" href="main.html" aria-current="page">
-                    <img class="tabbar__ico" src="img/ico_home_white.png" alt="" aria-hidden="true">
-                    <span class="tabbar__label">Home</span>
-                </a>
-
-                <a class="tabbar__item" href="diagnosis_form.html">
-                    <img class="tabbar__ico" src="img/ico_temple_white.png" alt="" aria-hidden="true">
-                    <span class="tabbar__label">診断</span>
-                </a>
-            </div>
-        </nav>
-
     </main>
+
+
+    <nav class="tabbar" aria-label="フッターナビ">
+        <div class="tabbar__inner">
+            <a class="tabbar__item" href="chai.html">
+                <img class="tabbar__ico" src="img/ico_chai_white.png" alt="" aria-hidden="true">
+                <span class="tabbar__label">チャイ</span>
+            </a>
+
+            <a class="tabbar__item is-active" href="main.html" aria-current="page">
+                <img class="tabbar__ico" src="img/ico_home_white.png" alt="" aria-hidden="true">
+                <span class="tabbar__label">Home</span>
+            </a>
+
+            <a class="tabbar__item" href="diagnosis_form.html">
+                <img class="tabbar__ico" src="img/ico_temple_white.png" alt="" aria-hidden="true">
+                <span class="tabbar__label">診断</span>
+            </a>
+        </div>
+    </nav>
+
 
     <script src="js/app.js" defer></script>
     <script src="js/diagnosis.js" defer></script>
-
-
 </body>
 
 </html>
