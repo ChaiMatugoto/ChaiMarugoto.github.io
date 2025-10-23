@@ -334,3 +334,18 @@ main.chai {
     font-feature-settings: "palt" 1;
     /* 日本語のプロポーショナル代替で自然に詰める */
 }
+
+.panel--menu .menu__bg {
+    display: flex;
+    /* 中身を中央寄せするためフレックス */
+    justify-content: center;
+    /* 水平中央 */
+}
+
+.panel--menu .menu-all {
+    width: min(340px, 92%);
+    /* 画面に応じて縮む上限付き幅 */
+    height: auto;
+    margin: 0 auto;
+    /* 念のためセンター */
+}
