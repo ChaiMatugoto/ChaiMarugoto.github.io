@@ -25,7 +25,7 @@ body {
 /* ヘッダー */
 .hdr {
     position: relative;
-    margin-top: 8px;
+    margin-top: 0px;
     height: 36px;
     display: grid;
     justify-items: center;

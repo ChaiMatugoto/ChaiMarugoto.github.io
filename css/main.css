@@ -371,8 +371,8 @@ main,
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
+    gap: 8px;
+    padding: 10px 12px;
 }
 
 /* 左の白い丸チップ */
