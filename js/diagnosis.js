@@ -103,45 +103,77 @@
     // ===== 画像セットの共通関数（404時はplaceholder） =====
     function setPortrait(imgEl, deityName) {
         if (!imgEl) return;
-        const src = PORTRAIT[deityName] || "img/deities/placeholder.png";
-        imgEl.onerror = () => { imgEl.src = "img/deities/placeholder.png"; };
+        const src = PORTRAIT[deityName] || "img/kamisama_white.png";
+        imgEl.onerror = () => { imgEl.src = "img/kamisama_white.png"; };
         imgEl.src = src;
         imgEl.alt = deityName ? `${deityName}のイラスト` : "";
     }
 
     // ===== ページ別ハンドラ =====
     // 診断フォーム（diagnosis_form.html）
+    // ====== 診断フォーム（diagnosis_form.html） ======
     function handleFormPage() {
         const btn = document.getElementById('quizSubmitBtn');
         if (!btn) return;
+
+        // 未回答の設問を視覚的に示す（任意だが便利）
+        function focusFirstUnanswered(i, radios) {
+            // ラッパー（質問ブロック）を赤枠にする例
+            const block = radios?.[0]?.closest('.question') || radios?.[0]?.closest('fieldset');
+            if (block) {
+                block.classList.add('is-error');
+                // 他のエラー解除
+                document.querySelectorAll('.question.is-error, fieldset.is-error')
+                    .forEach(el => { if (el !== block) el.classList.remove('is-error'); });
+                block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
 
         function collectAnswers() {
             const ab = [];
             for (let i = 1; i <= 8; i++) {
                 const name = `q${i}`;
                 const radios = Array.from(document.querySelectorAll(`input[name="${name}"]`));
-                if (radios.length < 2) throw new Error(`設問${i}の選択肢が見つかりません`);
-                const aVal = radios[0].value;  // 先頭=A
+                if (radios.length < 2) {
+                    throw new Error(`設問${i}の選択肢が見つかりません`);
+                }
+                const aVal = radios[0].value;          // 先頭 = A
                 const checked = radios.find(r => r.checked);
-                if (!checked) throw new Error(`設問${i}が未回答です`);
+                if (!checked) {
+                    // ここで例外を投げる前に、見つけやすくする
+                    focusFirstUnanswered(i, radios);
+                    throw new Error(`設問${i}が未回答です`);
+                }
                 ab.push(checked.value === aVal ? 'A' : 'B');
             }
-            return ab.join("");
+            // クリア時は赤枠を全解除
+            document.querySelectorAll('.question.is-error, fieldset.is-error')
+                .forEach(el => el.classList.remove('is-error'));
+            return ab.join('');
         }
 
         btn.addEventListener('click', (e) => {
+            // まず全ての既定動作/伝播を止める（親の data-next ナビも無効化）
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
             try {
-                const answersAB = collectAnswers();
+                const answersAB = collectAnswers();   // 未回答があればここで throw
                 const result = diagnoseFromAnswers(answersAB);
                 sessionStorage.setItem('diagnosisResult', JSON.stringify(result));
+
+                // ここまで来たら“成功時のみ”手動で遷移
                 const host = btn.closest('[data-next]');
                 const url = host ? host.getAttribute('data-next') : 'diagnosis_result.html';
                 location.href = url;
             } catch (err) {
+                // 失敗時はアラートを出すだけで、その場にとどまる（遷移しない）
                 alert(err.message || String(err));
+                // 念のため、ここでもう一度完全停止
+                return false;
             }
-        });
+        }, true); // ← capture フェーズで先に食うことで他ハンドラより優先して止める
     }
 
     // 診断結果ページ（diagnosis_result.html）

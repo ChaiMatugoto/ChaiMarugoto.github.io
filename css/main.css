@@ -217,7 +217,7 @@ body {
     font-style: normal;
     font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.5;
 }
 
 .card__btn {
@@ -342,7 +342,7 @@ main,
     padding-bottom: calc(var(--tabbar-height) + 8px + env(safe-area-inset-bottom));
 }
 
-@media (max-width: 390px) {
+@media (max-width: 360px) {
     .cards {
         grid-template-columns: 1fr;
         /* 1列に */
@@ -457,4 +457,28 @@ main,
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+
+/* 診断注意書き（フッター直上） */
+.notice--diag {
+    max-width: 720px;
+    margin: 10px auto calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 8px);
+    /* 下側はフッターの高さぶん離して被らないようにする */
+    padding: 8px 12px;
+    /* うっすらグレー（存在はわかるが控えめ） */
+    color: #3d2e1f;
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* 画面が狭い時は少し詰める */
+@media (max-width: 380px) {
+    .notice--diag {
+        margin: 8px auto calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 6px);
+        padding: 6px 10px;
+        font-size: 12px;
+    }
 }
