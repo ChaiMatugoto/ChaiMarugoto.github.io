@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>チャチャイのチャイ</title>
+    <link rel="stylesheet" href="css/kamisama.css" />
+</head>
+
+<body>
+    <header class="hdr" aria-label="ページ見出し">
+        <a class="hdr__back" href="javascript:void(0)" aria-label="前のページに戻る" onclick="history.back();">
+            <svg class="hdr__backIcon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </a>
+        <h1 class="hdr-text">神様について</h1>
+        <hr class="hdr-line">
+    </header>
+
+    <!-- ===== 本文 ===== -->
+    <main class="kamisama" role="main" aria-label="神様について">
+        <div class="stack">
+
+            <!-- カード1：インドの神様（水色） -->
+            <section class="panel panel--about" aria-labelledby="about-title">
+                <h2 id="about-title" class="panel__title">インドの神様</h2>
+                <div class="panel__body">
+                    <p>ああああああああああああああああ</p>
+                    <p>ああああああああああああああああ</p>
+                    <p>ああああああああああああああああ</p>
+                </div>
+            </section>
+
+            <!-- カード2：神様の種類（薄紫） -->
+            <section class="panel panel--types" aria-labelledby="types-title">
+                <h2 id="types-title" class="panel__title">神様の種類</h2>
+                <div class="panel__body">
+                    <p>ああああああああああああああああ</p>
+                    <p>ああああああああああああああああ</p>
+                    <p>ああああああああああああああああ</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+    <!-- ===== /本文 ===== -->
+
+    <nav class="tabbar" aria-label="フッターナビ">
+        <div class="tabbar__inner">
+            <a class="tabbar__item" href="diagnosis_form.html">
+                <img class="tabbar__ico" src="img/ico_temple_white.png" alt="" aria-hidden="true">
+                <span class="tabbar__label">神様</span>
+            </a>
+
+            <a class="tabbar__item is-active" href="main.html" aria-current="page">
+                <img class="tabbar__ico" src="img/ico_home_white.png" alt="" aria-hidden="true">
+                <span class="tabbar__label">Home</span>
+            </a>
+
+            <a class="tabbar__item" href="chai.html">
+                <img class="tabbar__ico" src="img/ico_chai_white.png" alt="" aria-hidden="true">
+                <span class="tabbar__label">チャイ</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="js/app.js" defer></script>
+</body>
+
+</html>

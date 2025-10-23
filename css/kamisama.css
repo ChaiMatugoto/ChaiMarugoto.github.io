@@ -189,119 +189,72 @@ main,
     }
 }
 
-/* ----------------------------------------
-   ここから：チャイページ用 追記（新HTML対応）
----------------------------------------- */
-
-/* メイン余白 */
-main.chai {
-    padding: 16px 14px 96px;
+:root {
+    --panel-aqua: #cfeff0;
+    /* 1枚目：水色 */
+    --panel-lav: #cfc9ff;
+    /* 2枚目：薄紫 */
+    --round: 18px;
 }
 
-/* カードの縦積み */
+/* ===== 本文レイアウト ===== */
+main.kamisama {
+    padding: 16px 14px 96px;
+    /* 下はタブバー分の余白に合わせる */
+}
+
 .stack {
     display: grid;
     gap: 18px;
+    /* カード間の余白 */
 }
 
-/* パネル（カード） */
+/* ===== カード ===== */
 .panel {
     border-radius: var(--round);
     padding: 16px 18px;
+    /* 画像のモックに合わせた内側余白 */
     background: #fff;
+    box-shadow: none;
+    /* 影なし */
 }
 
+/* カード色 */
+.panel--about {
+    background: var(--panel-aqua);
+}
+
+.panel--types {
+    background: var(--panel-lav);
+}
+
+/* 見出し（太字） */
 .panel__title {
     margin: 0 0 10px;
-    font-size: 20px;
     font-weight: 800;
-    letter-spacing: .03em;
+    font-size: 24px;
+    /* モックに合わせて24px */
+    letter-spacing: .02em;
+}
+
+/* 説明文（本文） */
+.panel__body {
+    line-height: 1.9;
 }
 
 .panel__body p {
-    margin: 0 0 .6em;
+    margin: 0 0 .7em;
+    font-size: 20px;
+    /* 指定どおり24px */
 }
 
 .panel__body p:last-child {
     margin-bottom: 0;
 }
 
-/* セクション別の色 */
-.panel--about {
-    background: var(--panel-aqua);
-}
-
-.panel--menu {
-    background: var(--panel-pink);
-    position: relative;
-    overflow: hidden;
-}
-
-.panel--allergy {
-    background: var(--panel-lav);
-}
-
-/* メニュー：1枚画像をそのまま表示（新HTML）
-   <div class="menu__bg"><img class="menu-all" src="..."></div>
-*/
-.menu__bg {
-    position: relative;
-    /* 必要に応じて relative */
-    display: block;
-}
-
-.menu-all {
-    display: block;
-    width: 100%;
-    /* パネル幅いっぱいに表示 */
-    height: auto;
-    user-select: none;
-    -webkit-user-drag: none;
-    pointer-events: none;
-    /* 画像でクリックを邪魔しない */
-    border-radius: calc(var(--round) - 2px);
-    box-shadow: none !important;
-    /* 画像に付いた影を無効化 */
-    filter: none !important;
-    /* drop-shadow等のフィルタがあれば無効化 */
-    text-shadow: none !important;
-    /* 念のため */
-}
-
-
-/* アレルギー内の強弱 */
-.allergy__strong {
-    font-weight: 800;
-}
-
-.allergy__note {
-    font-size: 13px;
-    opacity: .8;
-    margin-top: 4px;
-}
-
-/* 視覚的に隠す（スクリーンリーダー用） */
-.visually-hidden {
-    position: absolute !important;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* ちょいレスポンシブ */
-@media (min-width: 480px) {
-    .panel__title {
-        font-size: 22px;
-    }
-}
-
+/* ===== ちょいレスポンシブ（任意） ===== */
 @media (min-width: 768px) {
-    main.chai {
+    main.kamisama {
         padding: 20px 24px 110px;
     }
 
@@ -310,27 +263,4 @@ main.chai {
         max-width: 720px;
         margin: 0 auto;
     }
-}
-
-.panel--about .panel__body,
-.panel--allergy .panel__body {
-    font-size: 18px;
-    /* お好みで 16–20px に調整 */
-    line-height: 1.9;
-}
-
-/* 段落だけを明示的に上げたい場合はこちらでもOK */
-.panel--about .panel__body p,
-.panel--allergy .panel__body p {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-
-.panel--about .panel__body p,
-.panel--allergy .panel__body p {
-    letter-spacing: -0.005em;
-    /* まずは -0.01em。もっと詰めるなら -0.015em or -0.02em */
-    font-feature-settings: "palt" 1;
-    /* 日本語のプロポーショナル代替で自然に詰める */
 }
