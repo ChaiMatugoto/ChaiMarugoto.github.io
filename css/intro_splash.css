@@ -18,7 +18,7 @@ body {
 
 .heroLogo {
     position: absolute;
-    top: 172px;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
     width: 324px;
@@ -26,9 +26,10 @@ body {
     z-index: 2;
 }
 
+
 .bgLeft {
     position: absolute;
-    top: 461px;
+    top: 339px;
     left: -18px;
     width: 145px;
     height: 302px;
@@ -37,7 +38,7 @@ body {
 
 .bgRight {
     position: absolute;
-    top: 442px;
+    top: 320px;
     left: 260px;
     width: 138px;
     height: 287px;
@@ -46,7 +47,7 @@ body {
 
 .heroTextImg {
     position: absolute;
-    top: 529px;
+    top: 409px;
     left: 50%;
     transform: translateX(-50%);
     width: 314.5542px;
@@ -56,7 +57,7 @@ body {
 
 .ctaHint {
     position: absolute;
-    top: 695px;
+    top: 530px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
