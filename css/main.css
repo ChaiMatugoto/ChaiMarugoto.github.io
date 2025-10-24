@@ -188,7 +188,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 156px);
     /* 183px → 156px に縮小 */
-    gap: 20px;
+    gap: 16px;
     /* 少し余白 */
     justify-content: center;
 }

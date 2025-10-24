@@ -308,15 +308,15 @@ main.kamisama {
 .deity__name {
     margin: 0;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 18px;
     /* モック寄せ：大きめ */
     letter-spacing: .04em;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .deity__tag {
     margin: 6px 0 0;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 1.6;
     opacity: .95;
 }
@@ -329,11 +329,11 @@ main.kamisama {
     }
 
     .deity__name {
-        font-size: 28px;
+        font-size: 16px;
     }
 
     .deity__tag {
-        font-size: 16px;
+        font-size: 10px;
     }
 }
 
@@ -368,12 +368,6 @@ main.kamisama {
 }
 
 
-.deity__name {
-    font-size: 28px;
-    /* 32px → 28px に縮小 */
-    line-height: 1.25;
-    /* 読みやすく少し広め */
-}
 
 /* タブレット以上も少しだけ小さく */
 @media (min-width: 768px) {

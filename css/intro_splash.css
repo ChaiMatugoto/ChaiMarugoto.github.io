@@ -14,6 +14,7 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+
 }
 
 :root {
@@ -71,11 +72,21 @@ body {
 
 .heroTextImg {
     position: absolute;
-    top: 440px;
+    top: 420px;
     left: 50%;
     transform: translateX(-50%);
-    width: 314.5542px;
-    height: 107px;
+    color: #593618;
+    text-align: center;
+    font-family: "Hiragino Kaku Gothic ProN";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 3.04px;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+
     z-index: 2;
 }
 
