@@ -89,7 +89,7 @@ body {
 .enbBtn {
     display: grid;
     place-items: center;
-    width: 283px;
+    width: 95%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     border: 0;
@@ -148,7 +148,7 @@ body {
 
 .enb__panel {
     position: absolute;
-    top: 220px;
+    top: 240px;
     width: 57.2%;
     min-height: 9.8%;
     left: 50%;
@@ -186,22 +186,28 @@ body {
 .cards {
     margin: 10px auto 6px;
     display: grid;
-    grid-template-columns: repeat(2, 183px);
-    gap: 7px;
+    grid-template-columns: repeat(2, 156px);
+    /* 183px → 156px に縮小 */
+    gap: 20px;
+    /* 少し余白 */
     justify-content: center;
 }
 
 .card {
-    width: 183px;
-    height: 224px;
+    width: 156px;
+    /* 183px → 156px */
+    height: 192px;
+    /* 224px → 192px */
     background: var(--card-bg);
     color: #fff;
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
     display: grid;
     grid-template-rows: auto auto auto auto;
-    row-gap: 15px;
-    padding: 11px 16px 16px;
+    row-gap: 10px;
+    /* 15px → 10px */
+    padding: 10px 10px 12px;
+    /* 11px 16px 16px → タイトに */
     position: relative;
     overflow: hidden;
     border: 0;
@@ -209,88 +215,106 @@ body {
     transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
 
+
 .card:active {
     transform: scale(.98);
 }
 
 .card__ttl {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-align: center;
-    font-family: "Noto Sans";
-    font-size: 28px;
-    font-style: normal;
+    font-size: 24px;
+    /* 28px → 24px */
     font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.15;
     letter-spacing: .02em;
 }
 
-/* リード文 */
 .card__lead {
-    display: flex;
-    width: 163px;
-    height: 30px;
-    flex-direction: column;
-    justify-content: center;
+    width: auto;
+    /* 固定幅を撤廃 */
+    height: auto;
+    padding: 0 4px;
     color: #FFF;
     text-align: center;
-    font-family: "Noto Sans";
     font-size: 12px;
-    font-style: normal;
+    /* 12px → 11px */
     font-weight: 700;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
+    /* 少し広め */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card__btn {
-    display: inline-flex;
-    width: 163px;
-    height: 28px;
-    padding: 2px 21px;
-    justify-content: flex-end;
+    width: auto;
+    /* 固定幅を撤廃 */
+    height: 26px;
+    /* 28px → 26px */
+    padding: 2px 12px;
+    /* 2px 21px → タイトに */
+    justify-content: center;
     align-items: center;
     gap: 6px;
-    flex-shrink: 0;
-    border-radius: 18px;
+    border-radius: 16px;
+    /* 18px → 16px */
     text-decoration: none;
     color: var(--pill-fg);
     background: #F3EADC;
     pointer-events: none;
     cursor: default;
-    margin: 0;
-}
-
-.card__btn:active {
-    transform: scale(.98);
-    filter: brightness(.98);
+    margin: 0 auto;
+    /* 中央寄せ */
 }
 
 .card__btnTxt {
-    display: inline-flex;
-    width: 124px;
-    height: 20px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
+    width: auto;
+    /* 固定幅撤廃 */
+    height: 18px;
+    /* 20px → 18px */
     color: #000;
     text-align: center;
-    font-family: "Noto Sans";
-    font-size: 12px;
-    font-style: normal;
+    font-size: 11px;
+    /* 12px → 11px */
     font-weight: 700;
-    line-height: 50px;
+    line-height: 1.6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card__ill {
     justify-self: center;
     align-self: start;
-    width: 75px;
-    height: 75px;
+    width: 58px;
+    /* 75px → 62px */
+    height: 58px;
     display: block;
     margin: 0;
 }
+
+@media (max-width: 360px) {
+    .cards {
+        grid-template-columns: 1fr;
+        /* 1列に */
+        justify-content: center;
+        justify-items: center;
+        width: min(92vw, 420px);
+        margin: 16px auto 0;
+        gap: 10px;
+        /* 少し余白 */
+    }
+
+    .card {
+        width: 156px;
+        /* 156px を維持 */
+        height: 192px;
+        /* 192px を維持 */
+    }
+}
+
 
 :root {
     --tabbar-bg: #D1AB74;
